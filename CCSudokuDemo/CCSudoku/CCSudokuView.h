@@ -28,19 +28,27 @@ typedef NS_ENUM(NSInteger, SudokuType) {
 
 @interface CCSudokuView : UIView
 
-//@property (nonatomic, assign) int rowNumber;   //行数
-//@property (nonatomic, assign) int columnNumber; //列数
 @property (nonatomic, copy) NSString *cellClassName;    //单元格类名
-//@property (nonatomic, assign) int padding;  //单元格间隙
-//@property (nonatomic, copy) NSArray *gridArray; //单元格类型数组,类型有+,-,*,/,.,=,del和数字
 @property (nonatomic, assign) id <CCSudokuViewDelegate> delegate;
 
-//-(void) loadView;
+/**
+ *  sudokuView创建函数
+ *
+ *  @param rowNum        行数
+ *  @param colNum        列数
+ *  @param cellPadding   单元格间隙
+ *  @param color         间隙颜色
+ *  @param cellArray     单元格数组
+ *  @param cellClassName 单元格类名
+ *  @param sudokuType    类型
+ */
 -(void) createSudoku:(NSInteger)rowNum
               column:(NSInteger)colNum
-             padding:(CGFloat)gridPadding
+             padding:(CGFloat)cellPadding
                color:(UIColor *)color
-           gridArray:(NSArray *)gridArray
-                type:(SudokuType)sudokuType;
+           cellArray:(NSArray *)cellArray
+       cellClassName:(NSString *)cellClassName
+                type:(SudokuType)sudokuType
+            delegate:(id<CCSudokuViewDelegate>)delegate;
 
 @end

@@ -35,8 +35,10 @@
                   column:4
                  padding:1.0
                    color:[UIColor orangeColor]
-               gridArray:gridArray
-                    type:SudokuTypeDefault];
+               cellArray:gridArray
+           cellClassName:@"CCSudokuGrid"
+                    type:SudokuTypeDefault
+                delegate:self];
     
     
     
