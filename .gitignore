@@ -1,0 +1,11 @@
+#忽略DerivedData文件夹
+DerivedData/
+#忽略CCSudokuDemo.xcodeproj/下除了project的文件
+CCSudokuDemo.xcodeproj/*
+!CCSudokuDemo.xcodeproj/project.pbxproj
+#忽略cocoapods生成的Pods文件夹及工程
+Pods/
+#忽略cocoapods生成的.xcworkspace
+*.xcworkspace
+#忽略.DS_Store
+.DS_Store
