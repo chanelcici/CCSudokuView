@@ -12,10 +12,11 @@
 typedef NS_ENUM(NSInteger, SudokuType) {
     SudokuTypeDefault = 0,  //田
     SudokuTypeLeftRight,    //王
-    SudokuTypUpDown,        //卅
+    SudokuTypeUpDown,       //卅
     SudokuTypeAround,       //井
     SudokuTypeInside,       //口
     SudokuTypeNone,         //无框线
+    SudokuTypeCustom,       //自定义
     
 };
 
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSInteger, SudokuType) {
 -(void) createSudoku:(NSInteger)rowNum
               column:(NSInteger)colNum
              padding:(CGFloat)gridPadding
+               color:(UIColor *)color
            gridArray:(NSArray *)gridArray
                 type:(SudokuType)sudokuType;
 

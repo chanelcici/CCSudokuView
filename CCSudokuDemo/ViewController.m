@@ -24,14 +24,19 @@
 
     CCSudokuView *sudoku = [[CCSudokuView alloc] initWithFrame:CGRectMake(10, 20, self.view.frame.size.width-10*2, self.view.frame.size.height-20-10)];
     [self.view addSubview:sudoku];
-    sudoku.backgroundColor = [UIColor orangeColor];
+//    sudoku.backgroundColor = [UIColor orangeColor];
     
     NSArray *gridArray = [NSArray arrayWithObjects:
                           @"1", @"2", @"3", @"del",
                           @"4", @"5", @"6", @"",
                           @"7", @"8", @"9", @"",
                           @".", @"0", @"+", @"",  nil];
-    [sudoku createSudoku:4 column:4 padding:1.0 gridArray:gridArray type:SudokuTypeDefault];
+    [sudoku createSudoku:4
+                  column:4
+                 padding:1.0
+                   color:[UIColor orangeColor]
+               gridArray:gridArray
+                    type:SudokuTypeDefault];
     
     
     
