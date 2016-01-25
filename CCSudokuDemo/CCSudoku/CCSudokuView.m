@@ -94,50 +94,13 @@
         return;
     }
     if (rowNumber > 0 && columnNumber > 0 && padding >= 0) {
-        
-        //计算器界面用GridType
         for (int i=1; i <= rowNumber*columnNumber; i++) {
-//            GridType type;
-//            NSString *text = [cellArray objectAtIndex:i-1];
-//            if ([text isEqualToString:@"+"]) {
-//                type = GridTypeAdd;
-//            }
-//            else if ([text isEqualToString:@"-"]) {
-//                type = GridTypeSubtract;
-//            }
-//            else if ([text isEqualToString:@"*"]) {
-//                type = GridTypeMultiply;
-//            }
-//            else if ([text isEqualToString:@"/"]) {
-//                type = GridTypeDivide;
-//            }
-//            else if ([text isEqualToString:@"="]) {
-//                type = GridTypeEqual;
-//            }
-//            else if ([text isEqualToString:@"del"]) {
-//                type = GridTypeDelete;
-//            }
-//            else if ([text isEqualToString:@"."]) {
-//                type = GridTypeDot;
-//            }
-//            else {
-//                type = GridTypeNumber;
-//            }
-//            
-//            CCSudokuGrid *gridView = [[CCSudokuGrid alloc] initWithType:type text:text];
-//            [bgView addSubview:gridView];
-//            gridView.tag = i;
-//            gridView.delegate = self;
-            
             UIButton *cellView = [[cellClass alloc] init];
             [bgView addSubview:cellView];
             cellView.tag = i;
             cellView.backgroundColor = [UIColor whiteColor];
 //            cellView.delegate = delegate;
         }
-        
-//        __block UIButton *behindView = (UIButton *)[[cellClass alloc] init];
-//        __block UIButton *frontView = (UIButton *)[[cellClass alloc] init];
         
         //创建Sudoku视图  i行数,j列数
         for (int i=1; i<=rowNumber; i++) {
