@@ -9,9 +9,8 @@
 #import "CCSudokuView.h"
 #import <Masonry/MASConstraintMaker.h>
 #import <Masonry/View+MASAdditions.h>
-#import "CCSudokuGrid.h"
 
-@interface CCSudokuView () <CCSudokuGridDelegate>
+@interface CCSudokuView ()// <CCSudokuGridDelegate>
 
 @end
 
@@ -85,6 +84,11 @@
             }
         }];
     
+    Class cellClass = NSClassFromString(cellClassName);
+    if (![cellClass isSubclassOfClass:[UIButton class]]) {
+        return;
+    }
+    
     //创建单元格
     if ([cellArray count] < rowNumber * columnNumber) {
         return;
@@ -125,23 +129,20 @@
 //            gridView.tag = i;
 //            gridView.delegate = self;
             
-            Class cellClass = NSClassFromString(cellClassName);
-            if (![cellClass isKindOfClass:[UIView class]]) {
-                return;
-            }
-            UIButton *cellView = (UIButton *)[[cellClass alloc] init];
+            UIButton *cellView = [[cellClass alloc] init];
             [bgView addSubview:cellView];
             cellView.tag = i;
+            cellView.backgroundColor = [UIColor whiteColor];
 //            cellView.delegate = delegate;
         }
         
+//        __block UIButton *behindView = (UIButton *)[[cellClass alloc] init];
+//        __block UIButton *frontView = (UIButton *)[[cellClass alloc] init];
+        
         //创建Sudoku视图  i行数,j列数
-        Class cellClass = NSClassFromString(cellClassName);
         for (int i=1; i<=rowNumber; i++) {
             for (int j=1; j<=columnNumber; j++) {
-                UIButton *currentView = (UIButton *)[[cellClass alloc] init];
-                currentView = [bgView viewWithTag:(columnNumber*(i-1)+j)];
-                
+                UIButton *currentView = [bgView viewWithTag:(columnNumber*(i-1)+j)];
                 [currentView mas_makeConstraints:^(MASConstraintMaker *make) {
                     
                     if (rowNumber == 1) {   //如果只有1行
@@ -151,20 +152,20 @@
                     else {
                         if (i == 1) {   //第1行
                             make.top.equalTo(bgView.mas_top);
-                            CCSudokuGrid *behindView = [bgView viewWithTag:(columnNumber*i+j)];
+                            UIButton *behindView = [bgView viewWithTag:(columnNumber*i+j)];
                             make.bottom.equalTo(behindView.mas_top).offset(-padding);
                             make.height.equalTo(behindView);
                         }
                         else if (i == rowNumber) {  //最后1行
-                            CCSudokuGrid *frontView = [bgView viewWithTag:(columnNumber*(i-2)+j)];
+                            UIButton *frontView = [bgView viewWithTag:(columnNumber*(i-2)+j)];
                             make.top.equalTo(frontView.mas_bottom).offset(padding);
                             make.bottom.equalTo(bgView.mas_bottom);
                             make.height.equalTo(frontView);
                             
                         }
                         else {  //中间各行
-                            CCSudokuGrid *frontView = [bgView viewWithTag:(columnNumber*(i-2)+j)];
-                            CCSudokuGrid *behindView = [bgView viewWithTag:(columnNumber*i+j)];
+                            UIButton *frontView = [bgView viewWithTag:(columnNumber*(i-2)+j)];
+                            UIButton *behindView = [bgView viewWithTag:(columnNumber*i+j)];
                             make.top.equalTo(frontView.mas_bottom).offset(padding);
                             make.bottom.equalTo(behindView.mas_top).offset(-padding);
                             make.height.equalTo(frontView);
@@ -178,20 +179,20 @@
                     else {
                         if (j == 1) {   //第1列
                             make.left.equalTo(bgView.mas_left);
-                            CCSudokuGrid *behindView = [bgView viewWithTag:(columnNumber*(i-1)+j+1)];
+                            UIButton *behindView = [bgView viewWithTag:(columnNumber*(i-1)+j+1)];
                             make.right.equalTo(behindView.mas_left).offset(-padding);
                             make.width.equalTo(behindView);
                         }
                         else if (j == columnNumber) {   //最后1列
-                            CCSudokuGrid *frontView = [bgView viewWithTag:(columnNumber*(i-1)+j-1)];
+                            UIButton *frontView = [bgView viewWithTag:(columnNumber*(i-1)+j-1)];
                             make.left.equalTo(frontView.mas_right).offset(padding);
                             make.right.equalTo(bgView.mas_right);
                             make.width.equalTo(frontView);
                             
                         }
                         else {  //中间各列
-                            CCSudokuGrid *frontView = [bgView viewWithTag:(columnNumber*(i-1)+j-1)];
-                            CCSudokuGrid *behindView = [bgView viewWithTag:(columnNumber*(i-1)+j+1)];
+                            UIButton *frontView = [bgView viewWithTag:(columnNumber*(i-1)+j-1)];
+                            UIButton *behindView = [bgView viewWithTag:(columnNumber*(i-1)+j+1)];
                             make.left.equalTo(frontView.mas_right).offset(padding);
                             make.right.equalTo(behindView.mas_left).offset(-padding);
                             make.width.equalTo(frontView);
