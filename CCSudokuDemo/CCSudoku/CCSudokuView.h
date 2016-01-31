@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, SudokuType) {
  *  @param cellArray        单元格数组
  *  @param cellClassName    单元格类名
  *  @param sudokuType       类型
- *  @param customPadding    自定义间隙(上,左,下,右)
+ *  @param customArray      自定义间隙数组(上,左,下,右) NSString
  */
 -(void) createSudoku:(NSInteger)rowNum
               column:(NSInteger)colNum
