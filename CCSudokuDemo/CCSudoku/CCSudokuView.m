@@ -7,8 +7,7 @@
 //
 
 #import "CCSudokuView.h"
-#import <Masonry/MASConstraintMaker.h>
-#import <Masonry/View+MASAdditions.h>
+#import "View+MASAdditions.h"
 
 @interface CCSudokuView ()// <CCSudokuGridDelegate>
 
